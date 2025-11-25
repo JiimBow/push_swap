@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   psh_lstnew.c                                       :+:      :+:    :+:   */
+/*   set_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 13:58:14 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 16:36:42 by jodone           ###   ########.fr       */
+/*   Created: 2025/11/25 17:10:45 by jodone            #+#    #+#             */
+/*   Updated: 2025/11/25 17:17:13 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*psh_lstnew(int value, int index)
+void	set_index(t_stack *stack)
 {
-	t_stack	*newnode;
-
-	newnode = malloc(sizeof(t_stack));
-	if (!newnode)
-		return (NULL);
-	newnode->value = value;
-	newnode->index = index;
-	newnode->next = NULL;
-	return (newnode);
+	t_stack	*tmp;
+	int 	i;
+	
+	i = 0;
+	tmp = stack;
+	while (tmp)
+	{
+		tmp->index = i;
+		i++;
+		tmp = tmp->next;
+	}
 }

@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   psh_lstnew.c                                       :+:      :+:    :+:   */
+/*   target_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 13:58:14 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 16:36:42 by jodone           ###   ########.fr       */
+/*   Created: 2025/11/25 16:43:25 by jodone            #+#    #+#             */
+/*   Updated: 2025/11/25 17:58:11 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*psh_lstnew(int value, int index)
+int	target_node(int	value, t_stack *stack)
 {
-	t_stack	*newnode;
+	t_stack	*tmp;
+	t_stack	*index_stack;
 
-	newnode = malloc(sizeof(t_stack));
-	if (!newnode)
-		return (NULL);
-	newnode->value = value;
-	newnode->index = index;
-	newnode->next = NULL;
-	return (newnode);
+	tmp = stack;
+	index_stack = stack;
+	while (tmp)
+	{
+		if (value > tmp->value)
+		{
+			if (index_stack->value < tmp->value)
+				index_stack = tmp;
+		}
+		tmp = tmp->next;
+	}
+	return (index_stack->index);
+}
+
+int	move_counter(int index, int nb_param)
+{
+	if (index < (nb_param / 2) + 1)
+		return (1);
+	return (0);
 }

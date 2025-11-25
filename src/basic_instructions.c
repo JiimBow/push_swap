@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:26:46 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 15:13:57 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/25 17:16:50 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	push(t_stack **stack_from, t_stack **stack_to)
 	(*stack_from)->next = NULL;
 	(*stack_from) = tmpfrom;
 	(*stack_to)->next = tmpto;
+	set_index(*stack_from);
+	set_index(*stack_to);
 }
 
 void	swap(t_stack **stack)
@@ -39,6 +41,7 @@ void	swap(t_stack **stack)
 	tmp1->next = tmp2->next;
 	tmp2->next = tmp1;
 	(*stack) = tmp2;
+	set_index(*stack);
 }
 
 void	rotate(t_stack **stack)
@@ -52,6 +55,7 @@ void	rotate(t_stack **stack)
 	(*stack)->next = tmp;
 	(*stack) = tmp->next;
 	tmp->next = NULL;
+	set_index(*stack);
 }
 
 void	reverse_rotate(t_stack **stack)
@@ -70,4 +74,5 @@ void	reverse_rotate(t_stack **stack)
 	tmp_last->next = (*stack);
 	(*stack) = tmp_last;
 	tmp->next = NULL;
+	set_index(*stack);
 }

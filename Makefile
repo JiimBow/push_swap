@@ -6,7 +6,7 @@
 #    By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 10:50:57 by jodone            #+#    #+#              #
-#    Updated: 2025/11/25 15:16:29 by jodone           ###   ########.fr        #
+#    Updated: 2025/11/25 17:12:36 by jodone           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC= $(SRC_DIR)main.c \
 	$(SRC_DIR)both_instructions.c \
 	$(SRC_DIR)sort_three.c \
 	$(SRC_DIR)check_sort.c \
+	$(SRC_DIR)target_node.c \
+	$(SRC_DIR)set_index.c \
 	$(SRC_DIR)sort.c
 
 INCLUDES=-I push_swap.h \
