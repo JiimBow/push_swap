@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:15:26 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 18:14:19 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 18:49:12 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,36 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
 	if (chunk == 0)
 		chunk++;
 	i = 0;
-	while (check_sort(stack_a) && !(*stack_b))
+	while (1)
 	{
 		if (count_param(stack_a) == 3)
 		{
 			sort_three(stack_a);
-			while (stack_b)
-			{
+			while (*stack_b)
 				push(stack_b, stack_a);
-				(*stack_b) = (*stack_b)->next;
-			}
+			break ;
 		}
 		chunk = chunk * (1 + i);
 		while (i < chunk)
 		{
 			rank_r = count_move_ra(stack_a, chunk - 1);
 			rank_rr = count_move_rra(stack_a, chunk - 1);
-			if (rank_r < count_param(stack_a) - rank_rr)
-				rotate_push(stack_a, stack_b, rank_r);
+			if (!(*stack_b))
+			{
+				push(stack_a, stack_b);
+				ft_printf("pb\n");
+			}
 			else
-				r_rotate_push(stack_a, stack_b, rank_rr);
+			{
+				if (rank_r < count_param(stack_a) - rank_rr)
+					rotate_push(stack_a, stack_b, rank_r);
+				else
+					r_rotate_push(stack_a, stack_b, rank_rr);
+			}
 			i++;
 		}
+		if (check_sort(stack_a) == 1 && !(*stack_b))
+			break ;
 	}
 }
 

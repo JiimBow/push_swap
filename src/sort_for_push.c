@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:29:04 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 18:13:39 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 18:57:11 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,24 @@ void	rotate_push(t_stack **stack_a, t_stack **stack_b, int rank)
 		rotate(stack_a);
 		ft_printf("ra\n");
 	}
-	while ((*stack_b)->rank != target_rank)
+	if ((*stack_b))
 	{
-		if (count_move_b(*stack_b, target_rank) < (count_param(stack_b) / 2) + 1)
+		while ((*stack_b)->rank != target_rank)
 		{
-			rotate(stack_b);
-			ft_printf("rb\n");
-		}
-		else
-		{
-			reverse_rotate(stack_b);
-			ft_printf("rrb\n");
+			if (count_move_b(*stack_b, target_rank) < (count_param(stack_b) / 2) + 1)
+			{
+				rotate(stack_b);
+				ft_printf("rb\n");
+			}
+			else
+			{
+				reverse_rotate(stack_b);
+				ft_printf("rrb\n");
+			}
 		}
 	}
 	push(stack_a, stack_b);
+	ft_printf("pb\n");
 }
 
 void	r_rotate_push(t_stack **stack_a, t_stack **stack_b, int rank)
@@ -58,18 +62,22 @@ void	r_rotate_push(t_stack **stack_a, t_stack **stack_b, int rank)
 		reverse_rotate(stack_a);
 		ft_printf("rra\n");
 	}
-	while ((*stack_b)->rank != target_rank)
+	if ((*stack_b))
 	{
-		if (count_move_b(*stack_b, target_rank) < (count_param(stack_b) / 2) + 1)
+		while ((*stack_b)->rank != target_rank)
 		{
-			rotate(stack_b);
-			ft_printf("rb\n");
-		}
-		else
-		{
-			reverse_rotate(stack_b);
-			ft_printf("rrb\n");
+			if (count_move_b(*stack_b, target_rank) < (count_param(stack_b) / 2) + 1)
+			{
+				rotate(stack_b);
+				ft_printf("rb\n");
+			}
+			else
+			{
+				reverse_rotate(stack_b);
+				ft_printf("rrb\n");
+			}
 		}
 	}
 	push(stack_a, stack_b);
+	ft_printf("pb\n");
 }

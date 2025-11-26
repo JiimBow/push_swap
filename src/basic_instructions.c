@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:26:46 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 17:16:50 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 18:47:06 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void	push(t_stack **stack_from, t_stack **stack_to)
 	tmpfrom = (*stack_from)->next;
 	tmpto = (*stack_to);
 	(*stack_to) = (*stack_from);
-	(*stack_from)->next = NULL;
-	(*stack_from) = tmpfrom;
 	(*stack_to)->next = tmpto;
+	(*stack_from) = tmpfrom;
 	set_index(*stack_from);
 	set_index(*stack_to);
 }
