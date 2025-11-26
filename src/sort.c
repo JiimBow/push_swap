@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:15:26 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 17:48:47 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 18:14:19 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
 			rank_r = count_move_ra(stack_a, chunk - 1);
 			rank_rr = count_move_rra(stack_a, chunk - 1);
 			if (rank_r < count_param(stack_a) - rank_rr)
-				rotate_push(*stack_a, *stack_b, rank_r);
+				rotate_push(stack_a, stack_b, rank_r);
 			else
-				r_rotate_push(*stack_a, *stack_b, rank_rr);
+				r_rotate_push(stack_a, stack_b, rank_rr);
 			i++;
 		}
 	}

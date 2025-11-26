@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 14:39:18 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 17:35:26 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 18:16:56 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	rank_param(t_stack *stack)
 		while (tmp)
 		{
 			if (tmp->value == lowest)
+			{
 				tmp->rank = rank;
+				rank++;
+			}
 			tmp = tmp->next;
 		}
 		if (rank_check(stack) == 0)
