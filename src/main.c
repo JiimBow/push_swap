@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:50:56 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 17:13:22 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 14:38:46 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 		psh_lstadd_back(&stack_a, psh_lstnew(ft_atoi(av[i]), i - 1));
 		i++;
 	}
+	rank_param(stack_a);
 	if (ac == 3)
 	{
 		if (check_sort(&stack_a) == 1)

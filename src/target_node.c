@@ -6,32 +6,31 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:43:25 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 17:58:11 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 18:05:37 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	target_node(int	value, t_stack *stack)
+int	target_node(int	rank, t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack	*index_stack;
+	int		t_rank;
 
-	tmp = stack;
-	index_stack = stack;
+	if (!stack)
+		return (0);
+	tmp = *stack;
+	t_rank = -1;
 	while (tmp)
 	{
-		if (value > tmp->value)
-		{
-			if (index_stack->value < tmp->value)
-				index_stack = tmp;
-		}
+		if (tmp->rank < rank && tmp->rank > t_rank)
+			t_rank = tmp->rank;
 		tmp = tmp->next;
 	}
-	return (index_stack->index);
+	return (t_rank);
 }
 
-int	move_counter(int index, int nb_param)
+int	half_check(int index, int nb_param)
 {
 	if (index < (nb_param / 2) + 1)
 		return (1);

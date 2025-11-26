@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:58:14 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 16:36:42 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/26 13:59:09 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*psh_lstnew(int value, int index)
 	newnode = malloc(sizeof(t_stack));
 	if (!newnode)
 		return (NULL);
+	ft_memset(newnode, -1, sizeof(t_stack));
 	newnode->value = value;
 	newnode->index = index;
 	newnode->next = NULL;
