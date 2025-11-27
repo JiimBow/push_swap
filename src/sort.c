@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:15:26 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 18:49:12 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/27 16:33:30 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,92 +72,53 @@ int	count_move_ra(t_stack **stack, int max_rank)
 void	big_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	chunk;
+	int	nbrank;
 	int	i;
-	int	rank_r;
-	int	rank_rr;
+	int	index_r;
+	int	index_rr;
 
-	chunk = ((count_param(stack_a) / 5));
-	if (chunk == 0)
-		chunk++;
+	nbrank = ((count_param(stack_a) / 10));
+	chunk = 0;
+	if (nbrank == 0)
+		nbrank++;
 	i = 0;
 	while (1)
 	{
 		if (count_param(stack_a) == 3)
 		{
-			sort_three(stack_a);
-			while (*stack_b)
-				push(stack_b, stack_a);
+			sort_three_a(stack_a);
+			rotate_push_back(stack_b, stack_a);
 			break ;
 		}
-		chunk = chunk * (1 + i);
-		while (i < chunk)
+		if (count_param(stack_a) == 2)
 		{
-			rank_r = count_move_ra(stack_a, chunk - 1);
-			rank_rr = count_move_rra(stack_a, chunk - 1);
-			if (!(*stack_b))
-			{
-				push(stack_a, stack_b);
-				ft_printf("pb\n");
-			}
+			if ((*stack_a)->value > (*stack_a)->next->value)
+				swap(stack_a, 'a');
+			rotate_push_back(stack_b, stack_a);
+			break ;
+		}
+		if (count_param(stack_a) == 1)
+		{
+			rotate_push_back(stack_b, stack_a);
+			break ;
+		}
+		chunk += nbrank;
+		while (*stack_a && i < chunk)
+		{
+			if (count_param(stack_b) == 3)
+				sort_three_b(stack_b);
+			index_r = count_move_ra(stack_a, chunk - 1);
+			index_rr = count_move_rra(stack_a, chunk - 1);
+			if (index_r < count_param(stack_a) - index_rr)
+				rotate_push(stack_a, stack_b, get_rank(stack_a, index_r));
 			else
-			{
-				if (rank_r < count_param(stack_a) - rank_rr)
-					rotate_push(stack_a, stack_b, rank_r);
-				else
-					r_rotate_push(stack_a, stack_b, rank_rr);
-			}
+				r_rotate_push(stack_a, stack_b, get_rank(stack_a, index_rr));
 			i++;
 		}
-		if (check_sort(stack_a) == 1 && !(*stack_b))
+		if ((check_sort(stack_a) == 1 && !(*stack_b)) || !(*stack_a))
+		{
+			rotate_push_back(stack_b, stack_a);
 			break ;
+		}
 	}
 }
-
-/*
-void	big_sort(t_stack **stack_a, t_stack **stack_b)
-{
-	int	index;
-	int	counter;
-
-	push(stack_a, stack_b);
-	push(stack_a, stack_b);
-	set_index(*stack_a);
-	set_index(*stack_b);
-	ft_printf("pb\npb\n");
-	while (1)
-	{
-		if (count_param(stack_a) == 3)
-			sort_three(stack_a);
-		else
-		{
-			index = target_node((*stack_a)->value, *stack_b);
-			if (index != 0)
-			{
-				if (move_counter(index, count_param(stack_b)) == 1)
-				{
-					counter = index;
-					while (counter > 0)
-					{
-						rotate(stack_b);
-						ft_printf("rb\n");
-						counter--;
-					}
-				}
-				else
-				{
-					counter = count_param(stack_b) - index;
-					while (counter > 0)
-					{
-						reverse_rotate(stack_b);
-						ft_printf("rrb\n");
-						counter--;
-					}
-				}
-			}
-			push(stack_a, stack_b);
-			ft_printf("pb\n");
-		}
-		if (check_sort(stack_a) == 0)
-			break ;
-	}
-}*/

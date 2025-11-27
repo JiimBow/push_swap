@@ -6,29 +6,32 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:09:30 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/25 17:16:30 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/27 15:20:28 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sort_three(t_stack **stack)
+void	sort_three_a(t_stack **stack)
 {
 	if ((*stack)->value > (*stack)->next->value
 		&& (*stack)->value > (*stack)->next->next->value)
-	{
-		rotate(stack);
-		ft_printf("ra\n");
-	}
+		rotate(stack, 'a');
 	if ((*stack)->next->value > (*stack)->value
 		&& (*stack)->next->value > (*stack)->next->next->value)
-	{
-		reverse_rotate(stack);
-		ft_printf("rra\n");
-	}
+		reverse_rotate(stack, 'a');
 	if ((*stack)->value > (*stack)->next->value)
-	{
-		swap(stack);
-		ft_printf("sa\n");
-	}
+		swap(stack, 'a');
+}
+
+void	sort_three_b(t_stack **stack)
+{
+	if ((*stack)->value < (*stack)->next->value
+		&& (*stack)->value < (*stack)->next->next->value)
+		rotate(stack, 'b');
+	if ((*stack)->next->value < (*stack)->value
+		&& (*stack)->next->value < (*stack)->next->next->value)
+		reverse_rotate(stack, 'b');
+	if ((*stack)->value < (*stack)->next->value)
+		swap(stack, 'b');
 }

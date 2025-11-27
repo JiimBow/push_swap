@@ -6,7 +6,7 @@
 #    By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/20 10:50:57 by jodone            #+#    #+#              #
-#    Updated: 2025/11/26 16:36:12 by jodone           ###   ########.fr        #
+#    Updated: 2025/11/27 15:15:58 by jodone           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,7 @@ NAME=push_swap
 SRC_DIR= src/
 
 SRC= $(SRC_DIR)main.c \
-	$(SRC_DIR)psh_lstnew.c \
-	$(SRC_DIR)psh_lstadd_back.c \
-	$(SRC_DIR)psh_lstlast.c \
+	$(SRC_DIR)psh_list.c \
 	$(SRC_DIR)basic_instructions.c \
 	$(SRC_DIR)both_instructions.c \
 	$(SRC_DIR)sort_three.c \

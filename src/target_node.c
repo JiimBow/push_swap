@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 16:43:25 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 18:13:43 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/27 16:26:41 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ int	target_node(int	rank, t_stack **stack)
 		if (tmp->rank < rank && tmp->rank > t_rank)
 			t_rank = tmp->rank;
 		tmp = tmp->next;
+	}
+	if (t_rank == -1)
+	{
+		tmp = *stack;
+		t_rank = tmp->rank;
+		while (tmp)
+		{
+			if (tmp->rank > t_rank)
+				t_rank = tmp->rank;
+			tmp = tmp->next;
+		}
 	}
 	return (t_rank);
 }

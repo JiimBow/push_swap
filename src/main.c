@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:50:56 by jodone            #+#    #+#             */
-/*   Updated: 2025/11/26 14:38:46 by jodone           ###   ########.fr       */
+/*   Updated: 2025/11/27 16:26:58 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,34 @@ int	main(int ac, char **av)
 	{
 		if (check_sort(&stack_a) == 1)
 		{
-			swap(&stack_a);
+			swap(&stack_a, 'a');
 			set_index(stack_a);
-			ft_printf("sa\n");
 		}
 	}
 	else if (ac == 4)
-		sort_three(&stack_a);
-	else
+		sort_three_a(&stack_a);
+	else if (ac > 4)
 		big_sort(&stack_a, &stack_b);
-	ft_printf("\n---------\n\n");
-	while (1)
-	{
-		if (stack_a)
-		{
-			ft_printf(" %i ", stack_a->value);
-			stack_a = stack_a->next;
-		}
-		else
-			ft_printf("   ");
-		if (stack_b)
-		{
-			ft_printf(" %i ", stack_b->value);
-			stack_b = stack_b->next;
-		}
-		else
-			ft_printf("   ");
-		ft_printf("\n");
-		if (!stack_a && !stack_b)
-			break ;
-	}
-	ft_printf("\n a  b\n");
+	// ft_printf("\n---------\n\n");
+	// while (1)
+	// {
+	// 	if (stack_a)
+	// 	{
+	// 		ft_printf(" %i ", stack_a->value);
+	// 		stack_a = stack_a->next;
+	// 	}
+	// 	else
+	// 		ft_printf("   ");
+	// 	if (stack_b)
+	// 	{
+	// 		ft_printf(" %i ", stack_b->value);
+	// 		stack_b = stack_b->next;
+	// 	}
+	// 	else
+	// 		ft_printf("   ");
+	// 	ft_printf("\n");
+	// 	if (!stack_a && !stack_b)
+	// 		break ;
+	// }
+	// ft_printf("\n a  b\n");
 }
